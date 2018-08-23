@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../src/prettify.css">
+    <script src="../src/prettify.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+    <a href="../index.html">首页</a>
+    <h3>string字符串的方法</h3> 
+    <ul>
+        <li>match匹配
+        </li>
+        <li>search查询</li>
+        <li>repalce替换</li>
+        <li>split切割</li>
+    </ul> 
+    <script type="text/javascript">
+        var str = "asbc   abbc  abde    adccc";    
+        // ["ab", "ab"]
+        console.log(str.match(/ab/g));
+        //5
+        console.log(str.search(/ab*c/));
+        //asb9 abb9 abde ad999
+        console.log(str.replace(/c/g,'9')); 
+        //\s代表空格,按一个或多个空格来分割 
+        // ["asbc", "abbc", "abde", "adccc"]
+        console.log(str.split(/\s+/));
+    </script>
+    <pre class="prettyprint">   
+            var str = "asbc   abbc  abde    adccc";    
+            // ["ab", "ab"]
+            console.log(str.match(/ab/g));
+            //5
+            console.log(str.search(/ab*c/));
+            //asb9 abb9 abde ad999
+            console.log(str.replace(/c/g,'9')); 
+            //\s代表空格,按一个或多个空格来分割 
+            // ["asbc", "abbc", "abde", "adccc"]
+            console.log(str.split(/\s+/));
+   </pre>
+</body>
+
+</html>

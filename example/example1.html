@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../src/prettify.css">
+    <script src="../src/prettify.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+    <a href="../index.html">首页</a>
+    <h3>一些小例子</h3>
+    <ul style="list-style-type:decimal">
+        <li>验证是否手机号
+            <p>正则匹配是一位一位匹配，所以先确定要匹配的格式</p>
+            <p> 比如手机号15111021323,总共11位,第一位为1,第二为假如为3,4,5,6,后9位是数字</p>
+            <p>正则为1[3456]\d{9}</p>
+        </li>
+        <li>手机号替换成****
+            <p>字符串使用正则表达式replace即可string.replace(regex,'***')</p>
+            <p>regrexPhone = /1[3456]\d{9}/;phoneInfo.replace(regrexPhone, "***")</p>
+        </li>
+        <li>匹配网页标签
+            <p>前后标签定义,需使用都分组模式匹配前面</p>
+            <p>中间内容随意,可有可无</p>
+            <p><(.+)>.*<\1>,解释:()模式匹配,\1取出第一个模式匹配,.+任意字符出现1次或多次,.*任意字符出现0次或多次</p>
+        </li>
+        <li>在网页中找出电话
+            <div id="phoneInfo">
+                <h1>小龙</h1>
+                <h4>电话:15111119999</h4>
+                <h5>地址:xxxxx</h5>
+            </div>
+        </li>
+        <li>敏感词替换</li>
+        <li>去首尾空格</li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script type="text/javascript">
+        //1.验证是否是手机号 
+        var regrexPhone = /1[3456]\d{9}/;
+        var phone1 = "15111021329";
+        var phone2 = "25111021329";
+        var phoneInfo = "龙杨电话信息15111021329";
+        //false
+        console.log(regrexPhone.test(phone1), regrexPhone.test(phone2));
+        //***
+        console.log(phoneInfo.replace(regrexPhone, "***"));
+        //找到标签 ["<div>这是div内容</div>", "<span>第二个span标签</span>"]
+        var html="你是的<div>这是div内容</div><span>第二个span标签</span>";
+        var regexHtml=/<(.+)>.*<\/\1>/g;
+        console.log(html.match(regexHtml));
+        //网页找出电话
+        var phoneDom =  document.querySelector("#phoneInfo");
+        var phoneRegex=/.*<(.{1,8})>电话:(15\d{9})<\/\1>/;
+        var phoneInterHTML = phoneDom.innerHTML; 
+        console.log(phoneInterHTML,phoneInterHTML.match(phoneRegex)); 
+    </script>
+    <pre class="prettyprint">    
+        //1.验证是否是手机号 
+        var regrexPhone = /1[3456]\d{9}/;
+        var phone1 = "15111021329";
+        var phone2 = "25111021329";
+        var phoneInfo = "龙杨电话信息15111021329";
+        //false
+        console.log(regrexPhone.test(phone1), regrexPhone.test(phone2));
+        //2.手机替换***
+        console.log(phoneInfo.replace(regrexPhone, "***"));
+        //3.匹配网页找到标签 ["<div>这是div内容</div>", "<span>第二个span标签</span>"]
+        var html="你是的<div>这是div内容</div><span>第二个span标签</span>";
+        var regexHtml=/<(.+)>.*<\/\1>/g;
+        console.log(html.match(regexHtml));
+        //4.匹配找出电话
+        var phoneDom =  document.querySelector("#phoneInfo");
+        var phoneRegex=/.*<(.{1,8})>电话:(15\d{9})<\/\1>/;
+        var phoneInterHTML = phoneDom.innerHTML; 
+        console.log(phoneInterHTML,phoneInterHTML.match(phoneRegex)); 
+   </pre>
+</body>
+
+</html>

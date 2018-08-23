@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../src/prettify.css">
+    <script src="../src/prettify.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+    <a href="../index.html">首页</a>
+    <h3>正则特殊字符\</h3> 
+    \表示是转义
+    <ul> 
+        <li>\b单词边界 \B非边界</li>
+        <li>\d数字，\D非数字</li>
+        <li>特殊字符架上\,变成本意字符,比如*,\*表示就是*号</li>
+        <li>\n换行</li>
+        <li>\r回车</li>
+        <li>\s匹配一个空字符串 \S非空白</li>
+        <li>\w字母数字下划线，W不是字母数字下划线</li>
+    </ul> 
+    <script type="text/javascript">
+        var str = "hel helloworld what x2xddxx aa35bb a*baaac ";   
+        //(3) ["d", "d", "d"]  
+        console.log(str.match(/\d/g)); 
+       // (2) ["d", "dd"] ,带了+表示前面的字符出现0次或多次
+        console.log(str.match(/d+/g)); 
+        console.log(str.match(/a\*/g));
+        //(2) ["2", "3"]
+        console.log(str.match(/\d+/g));
+        //
+        console.log(str.match(/\bhello/g));
+ 
+
+        
+    </script>
+    <pre class="prettyprint">    
+            var str = "hel helloworld what x2xddxx aa35bb a*baaac ";   
+            //(3) ["d", "d", "d"]  
+            console.log(str.match(/\d/g)); 
+           // (2) ["d", "dd"] ,带了+表示前面的字符出现0次或多次
+            console.log(str.match(/d+/g)); 
+            console.log(str.match(/a\*/g));
+            //(2) ["2", "3"]
+            console.log(str.match(/\d+/g));
+            //
+            console.log(str.match(/\bhello/g));
+   </pre>
+</body>
+
+</html>

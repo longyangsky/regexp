@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../src/prettify.css">
+    <script src="../src/prettify.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+    <a href="../index.html">首页</a>
+    <h3>正则选项</h3> 
+    <ul> 
+        <li>{n}前面字符出现n次</li>
+        <li>{n,m}</li>
+        <li>+,1次或多次</li>
+        <li>?,匹配前一个表达式0次货1次,跟在*,?,+后面都变成非贪婪模式</li>
+        <li>*匹配前一个表达式0次或多次或者没有都行,等价为0</li>
+    </ul> 
+    <script type="text/javascript">
+        var str = "aaasbc   AaBcd  abc ABaabab abc";    
+        //(2) ["AaB", "aab"]
+        console.log(str.match(/a{2}b/ig)); 
+        //(7) ["b", "aB", "ab", "AB", "ab", "ab", "ab"]
+        console.log(str.match(/a{0,1}b/ig)); 
+        //["AaB", "ab", "AB", "aab", "ab", "ab"]
+        console.log(str.match(/a{1,}b/ig)); 
+        //(7) ["aaa", "Aa", "a", "A", "aa", "a", "a"] 贪婪模式一直找到完所有符合的才推出
+        console.log(str.match(/a+/ig)); 
+        //(11) ["a", "a", "a", "A", "a", "a", "A", "a", "a", "a", "a"] 废贪婪找到一个对比就找下一个
+        console.log(str.match(/a+?/ig)); 
+       
+        
+    </script>
+    <pre class="prettyprint">   
+            var str = "aaasbc   AaBcd  abc ABaabab abc";    
+            //(2) ["AaB", "aab"]
+            console.log(str.match(/a{2}b/ig)); 
+            //(7) ["b", "aB", "ab", "AB", "ab", "ab", "ab"]
+            console.log(str.match(/a{0,1}b/ig)); 
+            //["AaB", "ab", "AB", "aab", "ab", "ab"]
+            console.log(str.match(/a{1,}b/ig)); 
+            //(7) ["aaa", "Aa", "a", "A", "aa", "a", "a"] 贪婪模式一直找到完所有符合的才推出
+            console.log(str.match(/a+/ig)); 
+            //(11) ["a", "a", "a", "A", "a", "a", "A", "a", "a", "a", "a"] 废贪婪找到一个对比就找下一个
+            console.log(str.match(/a+?/ig)); 
+   </pre>
+</body>
+
+</html>

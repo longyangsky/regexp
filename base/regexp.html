@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../src/prettify.css">
+    <script src="../src/prettify.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+    <a href="../index.html">首页</a>
+    <h3>Regex使用</h3>
+    exec方法  
+    <ul>
+        <li>exec选项为g,需要反复执行迭代才能匹配下一个，返回数组</li>
+        <li>exec通配符(*)，返回数组</li>
+        <li>test返回true或false</li>
+    </ul>
+  
+
+    <script type="text/javascript">
+        var str = "abc abbc abde adccc";
+        var regexp = new RegExp('ab',"g");
+        var regexp2 = new RegExp('a(b*)b',"g");
+        var regexpResult = regexp.exec(str);
+        if (regexpResult != null) {
+            //["ab", index: 0, input: "abc abbc abde adccc", groups: undefined] 
+            console.log(regexpResult); 
+
+            regexpResult=regexp.exec(str)  
+            //["ab", index: 4, input: "abc abbc abde adccc", groups: undefined]
+            console.log(regexpResult);  
+        }
+        else {
+            console.log('未找到匹配项');
+        }
+        //["ab", "", index: 0, input: "abc abbc abde adccc", groups: undefined]
+        console.log('regex2',regexp2.exec(str));
+        //["abb", "b", index: 4, input: "abc abbc abde adccc", groups: undefined]
+        console.log('regex2',regexp2.exec(str));
+
+        //true
+        console.log(   regexp.test(str));
+ 
+     
+    </script>
+    <pre class="prettyprint">
+        var str = "abc abbc abde adccc";
+        var regexp = new RegExp('ab',"g");
+        var regexp2 = new RegExp('a(b*)b',"g");
+        var regexpResult = regexp.exec(str);
+        if (regexpResult != null) {
+            //["ab", index: 0, input: "abc abbc abde adccc", groups: undefined] 
+            console.log(regexpResult); 
+
+            regexpResult=regexp.exec(str)  
+            //["ab", index: 4, input: "abc abbc abde adccc", groups: undefined]
+            console.log(regexpResult);  
+        }
+        else {
+            console.log('未找到匹配项');
+        }
+        //["ab", "", index: 0, input: "abc abbc abde adccc", groups: undefined]
+        console.log('regex2',regexp2.exec(str));
+        //["abb", "b", index: 4, input: "abc abbc abde adccc", groups: undefined]
+        console.log('regex2',regexp2.exec(str));       
+   </pre>
+</body>
+
+</html>
