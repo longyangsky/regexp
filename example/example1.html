@@ -33,11 +33,22 @@
                 <h1>小龙</h1>
                 <h4>电话:15111119999</h4>
                 <h5>地址:xxxxx</h5>
-            </div>
+            </div> 
+            <p>通过匹配分组模式找到带有"电话:正则电话"的标签</p>
         </li>
-        <li>敏感词替换</li>
-        <li>去首尾空格</li>
-        <li></li>
+        <li>词语替换
+            <p>reaplce函数第二个参数回调函数返回匹配长度的*</p>
+        </li>
+        <li>去首尾空格
+            <p>\s代表,^代表首位,$代表末尾</p>
+            <p>^\s+|\s+$</p>
+            <p>用replace替换,注意都需要用g参数才会多次匹配</p>
+        </li>
+        <li>数字千分号
+            <p>从右边3位匹配一次，用模式匹配替换加,</p>
+            <p>/(\d)(?=(?:\d{3})+$)/g</p>
+            <p>(\d)只能数字,?=数字要满足的条件,?:不存储分组,$从字符串右侧开始</p>
+        </li>
         <li></li>
     </ul>
     <script type="text/javascript">
@@ -59,6 +70,24 @@
         var phoneRegex=/.*<(.{1,8})>电话:(15\d{9})<\/\1>/;
         var phoneInterHTML = phoneDom.innerHTML; 
         console.log(phoneInterHTML,phoneInterHTML.match(phoneRegex)); 
+        //词语替换
+        var words='你是一个漂亮的女生,男孩子都喜欢你';
+        var regexWords=/漂亮|男孩子/g;
+        console.log(words.replace(regexWords,function(input){
+            var char='';
+            for(var i=0;i<input.length;i++){
+                char+="*"
+            }
+            return char;
+        }));
+        //去首尾空格
+        var space="  我是带有 前后空格  ";
+        var spaceRegexp=/^\s+|\s+$/g;
+        console.log(space.replace(spaceRegexp,""));
+        //千分号
+        var number='9123456789';
+        var numberRegexp=/(\d)(?=(\d{3})+$)/g;//?:
+        console.log(number.replace(numberRegexp,'$1,'));
     </script>
     <pre class="prettyprint">    
         //1.验证是否是手机号 
@@ -79,6 +108,17 @@
         var phoneRegex=/.*<(.{1,8})>电话:(15\d{9})<\/\1>/;
         var phoneInterHTML = phoneDom.innerHTML; 
         console.log(phoneInterHTML,phoneInterHTML.match(phoneRegex)); 
+        //5.词语替换
+        var words='你是一个漂亮的女生,男孩子都喜欢你';
+        var regexWords=/漂亮|男孩子/g;
+        console.log(words.replace(regexWords,function(input){
+            //处理代码
+            return "*"
+        });
+        //去掉首尾空格 
+        var space="  我是带有 前后空格  ";
+        var spaceRegexp=/^\s+|\s+$/g;
+        console.log(space.replace(spaceRegexp,""));
    </pre>
 </body>
 
